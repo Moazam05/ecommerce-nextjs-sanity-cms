@@ -11,7 +11,7 @@ const HeroBanner = ({ heroBanner }) => {
       <div>
         <p className='beats-solo'>{smallText}</p>
         <h3>{midText}</h3>
-        <h1>{largeText1}</h1>
+        <h1 style={{ marginBottom: '40px' }}>{largeText1}</h1>
 
         <img
           src={urlFor(image)}
@@ -20,9 +20,10 @@ const HeroBanner = ({ heroBanner }) => {
         />
       </div>
       <div>
-        <Link href={`/product/${product}`}>
-          <button type='button'>{buttonText}</button>
+        <Link type='button' href={`/product/${product}`}>
+          <a className='hero-button'>{buttonText}</a>
         </Link>
+
         <div className='desc'>
           <h5>Description</h5>
           <p>{desc}</p>
