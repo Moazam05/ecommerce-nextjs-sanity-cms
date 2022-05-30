@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { urlFor } from '../lib/client';
 
 const HeroBanner = ({ heroBanner }) => {
-  console.log(heroBanner);
   const { smallText, midText, largeText1, image, product, buttonText, desc } =
     heroBanner;
   return (
