@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   AiFillStar,
   AiOutlineStar,
@@ -7,15 +8,21 @@ import {
 } from 'react-icons/ai';
 
 import { client, urlFor } from '../../lib/client';
-import { Product } from '../../components';
+import Product from '../../components/Product';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
+import { decQty, incQty } from '../../store/cart/cartSlice';
 
 const ProductDetails = ({ product, products }) => {
+  const dispatch = useDispatch();
+  const { qty } = useSelector((state) => state.cart);
   const { image, name, details, price } = product;
 
   const [index, setIndex] = useState(0);
 
   return (
-    <div>
+    <>
+      <Navbar />
       <div className='product-detail-container'>
         <div>
           <div className='image-container'>
@@ -25,9 +32,10 @@ const ProductDetails = ({ product, products }) => {
             />
           </div>
           <div className='small-images-container'>
-            {/* {image?.map((item, i) => {
+            {image?.map((item, i) => {
               return (
                 <img
+                  key={index}
                   src={urlFor(item)}
                   className={
                     i === index ? 'small-image selected-image' : 'small-image'
@@ -35,7 +43,7 @@ const ProductDetails = ({ product, products }) => {
                   onMouseEnter={() => setIndex(i)}
                 />
               );
-            })} */}
+            })}
           </div>
         </div>
         <div className='product-detail-desc'>
@@ -56,13 +64,13 @@ const ProductDetails = ({ product, products }) => {
           <div className='quantity'>
             <h3>Quantity:</h3>
             <p className='quantity-desc'>
-              <span className='minus' onClick=''>
+              <span className='minus' onClick={() => dispatch(decQty())}>
                 <AiOutlineMinus />
               </span>
               <span className='num' onClick=''>
-                0
+                {qty}
               </span>
-              <span className='plus' onClick=''>
+              <span className='plus' onClick={() => dispatch(incQty())}>
                 <AiOutlinePlus />
               </span>
             </p>
@@ -87,7 +95,8 @@ const ProductDetails = ({ product, products }) => {
           </div>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 

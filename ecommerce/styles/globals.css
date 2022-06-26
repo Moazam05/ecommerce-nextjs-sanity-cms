@@ -17,7 +17,7 @@ a {
 }
 
 .main-container {
-  max-width: 1400px;
+  max-width: 1300px;
   margin: auto;
   width: 100%;
 }
@@ -622,6 +622,12 @@ span.text-red {
 }
 
 @media screen and (max-width: 800px) {
+  .main-container {
+    margin-left: 28px;
+  }
+  .navbar-container {
+    width: 100%;
+  }
   .hero-banner-container {
     height: 560px;
   }
