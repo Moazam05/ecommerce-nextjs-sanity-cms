@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import {
   AiFillStar,
   AiOutlineStar,
@@ -11,11 +10,8 @@ import { client, urlFor } from '../../lib/client';
 import Product from '../../components/Product';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
-import { decQty, incQty } from '../../store/cart/cartSlice';
 
 const ProductDetails = ({ product, products }) => {
-  const dispatch = useDispatch();
-  const { qty } = useSelector((state) => state.cart);
   const { image, name, details, price } = product;
 
   const [index, setIndex] = useState(0);
@@ -64,11 +60,11 @@ const ProductDetails = ({ product, products }) => {
           <div className='quantity'>
             <h3>Quantity:</h3>
             <p className='quantity-desc'>
-              <span className='minus' onClick={() => dispatch(decQty())}>
+              <span className='minus' onClick={''}>
                 <AiOutlineMinus />
               </span>
-              <span className='num'>{qty}</span>
-              <span className='plus' onClick={() => dispatch(incQty())}>
+              <span className='num'>0</span>
+              <span className='plus' onClick={''}>
                 <AiOutlinePlus />
               </span>
             </p>
