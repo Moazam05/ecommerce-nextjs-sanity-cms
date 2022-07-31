@@ -22,9 +22,6 @@ const Cart = () => {
     onRemove,
   } = useStateContext();
 
-  console.log('cartItems', cartItems);
-  console.log('totalQuantities', totalQuantities);
-
   return (
     <div className='cart-wrapper' ref={cartRef}>
       <div className='cart-container'>
