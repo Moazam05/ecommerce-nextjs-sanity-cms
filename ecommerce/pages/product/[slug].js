@@ -35,7 +35,7 @@ const ProductDetails = ({ product, products }) => {
             {image?.map((item, i) => {
               return (
                 <img
-                  key={index}
+                  key={i}
                   src={urlFor(item)}
                   className={
                     i === index ? 'small-image selected-image' : 'small-image'
@@ -67,9 +67,7 @@ const ProductDetails = ({ product, products }) => {
               <span className='minus' onClick={() => dispatch(decQty())}>
                 <AiOutlineMinus />
               </span>
-              <span className='num' onClick=''>
-                {qty}
-              </span>
+              <span className='num'>{qty}</span>
               <span className='plus' onClick={() => dispatch(incQty())}>
                 <AiOutlinePlus />
               </span>
